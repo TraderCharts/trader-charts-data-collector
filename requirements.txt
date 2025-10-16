@@ -1,0 +1,4 @@
+selenium==4.36.0
+pandas==2.3.3
+pymongo==4.15.3
+python-dotenv==0.21.0
