@@ -14,10 +14,10 @@
 ---
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?logo=python&logoColor=white)
-![Selenium](https://img.shields.io/badge/Selenium-4.36.0-43B02A?logo=selenium&logoColor=white)
+![Selenium](https://img.shields.io/badge/Selenium-4.36.0-4B32C3?logo=selenium&logoColor=white)
 ![PyMongo](https://img.shields.io/badge/PyMongo-4.15.3-589636?logo=mongodb&logoColor=white)
-![Pandas](https://img.shields.io/badge/Pandas-2.3.3-150458?logo=pandas&logoColor=white)
-![MIT License](https://img.shields.io/badge/License-MIT-green)
+![Pandas](https://img.shields.io/badge/Pandas-2.3.3-E3FF00?logo=pandas&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-C0C0C0)
 
 ---
 
