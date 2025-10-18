@@ -18,6 +18,7 @@
 ![PyMongo](https://img.shields.io/badge/PyMongo-4.15.3-589636?logo=mongodb&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-2.3.3-E3FF00?logo=pandas&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-C0C0C0)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FTraderCharts%2Ftrader-charts-data-collector.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FTraderCharts%2Ftrader-charts-data-collector?ref=badge_shield)
 
 ---
 
@@ -68,3 +69,7 @@ Create `.env.development.local` file, and include all the following:
          MONGO_URI=[string]
          MONGO_DB_NAME=[string]
          MONGO_COLLECTION=[string]
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FTraderCharts%2Ftrader-charts-data-collector.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FTraderCharts%2Ftrader-charts-data-collector?ref=badge_large)
