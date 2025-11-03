@@ -1,6 +1,8 @@
 import os
 import shutil
+
 import pandas as pd
+
 
 class FileManagerDAO:
     def __init__(self, download_dir: str):
@@ -22,13 +24,15 @@ class FileManagerDAO:
     def normalize_headers(df: pd.DataFrame):
         if "timestamp" in df.columns:
             df["timestamp"] = pd.to_datetime(df["timestamp"], unit="s", origin="unix")
-        df = df.rename(columns={
-            "especie": "ticker",
-            "fecha": "date",
-            "apertura": "open",
-            "maximo": "high",
-            "minimo": "low",
-            "cierre": "close",
-            "volumen": "volume"
-        })
+        df = df.rename(
+            columns={
+                "especie": "ticker",
+                "fecha": "date",
+                "apertura": "open",
+                "maximo": "high",
+                "minimo": "low",
+                "cierre": "close",
+                "volumen": "volume",
+            }
+        )
         return df

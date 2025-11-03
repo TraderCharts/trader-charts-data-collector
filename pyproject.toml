@@ -1,78 +1,99 @@
-# This file configures the project for packaging, and can also hold other
-# tools' configuration settings.
-#
-# More details about what can go in this file:
-# https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html
+[build-system]
+requires = ["setuptools>=80", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [project]
-# This is the basic information about your project.
 name = "trader_charts_data_collector"
 description = "Trader Charts Data Collector"
+readme = {file = "README.md", content-type = "text/markdown"}
 
-readme = "README.md"
-
-# Put your own name and email address here. You can also add more authors.
 authors = [
     {name = "Gonzalo Sanchez Cano", email = "gonzalo.sanchezcano@gmail.com"},
 ]
 
-# You can choose a different license: https://choosealicense.com/
-# If you do, update the License classifier below, and put the correct text into
-# your LICENSE file.
-license = { text = "MIT" } 
-
-# Classifiers for your package. PyPI displays these on its page.
-# See https://pypi.org/classifiers/ for all of the possibilities.
-
+license = {text = "MIT"}
 classifiers = [
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
     "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent"
+    "Operating System :: OS Independent",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Topic :: Office/Business :: Financial :: Investment",
 ]
 
-
-# This is the minimum version of Python that pip will install your package on.
-# An overview of Python versions, their features and their lifecycle time frames
-# is at https://nedbatchelder.com/text/which-py.html.
-requires-python = ">= 3.9"
-
-# List your needed third-party libraries, if you have any.
-dependencies = [
-    "pandas==2.3.3",
-    "pymongo==4.15.3",
-    "selenium==4.36.0",
-    "python-dotenv==0.21.0"
-]
-
-# State that the version will be defined dynamically below.
+requires-python = ">=3.9"
 dynamic = ["version"]
 
+dependencies = [
+    "pandas>=2.0.0,<3.0.0",
+    "pymongo>=4.0.0,<5.0.0",
+    "selenium>=4.10.0,<5.0.0",
+    "python-dotenv>=1.0.0,<2.0.0",
+    "feedparser>=6.0.0,<7.0.0",
+    "beautifulsoup4>=4.12.0,<5.0.0",
+    "textblob>=0.17.0,<0.20.0",
+    "keybert>=0.8.0,<0.10.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "isort>=5.12.0",
+]
+
 [project.urls]
-# These URLs are displayed in a sidebar on PyPI. You don't have to have them,
-# but they can help people learn more about your project. You can include as
-# many named URLs as you want.  They can be any URL, not just to GitHub.
 "Author" = "https://github.com/sgonzaloc"
 "Main Project" = "https://github.com/TraderCharts"
 "Source code" = "https://github.com/TraderCharts/trader-charts-data-collector"
 "Issue tracker" = "https://github.com/TraderCharts/trader-charts-data-collector/issues"
+"Changelog" = "https://github.com/TraderCharts/trader-charts-data-collector/releases"
 
 [project.scripts]
-# COMMANDS: These are commands you are installing.  Omit this section if you
-# have no commands.  The names of the settings are the command names.
-# The values are a string in the form "module.to.import:function_to_run".
-
-# The 'command_add' command will run the function add_function() in the
-# src/services_package/operation_file.py file.
-#command_add = "services_package.operation_file:add_function"
-#command_rest = "services_package.operation_file:rest_function"
 
 [tool.setuptools.dynamic]
-# The version number will be read from __version__ in src/app/__init__.py
-version.attr = "app.__version__"
-
-[build-system]
-requires = ["setuptools>=80"]
-build-backend = "setuptools.build_meta"
+version.attr = "config.__version__"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+# === Tool configurations ===
+
+[tool.black]
+line-length = 160
+target-version = ["py311"]
+skip-string-normalization = true
+extend-exclude = '''
+/(
+    \.git
+  | \.venv
+  | \.vscode
+  | \.docs
+  | logs
+  | llm_models
+  | src/trader_charts_data_collector\.egg-info
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 160
+known_first_party = ["trader_charts_data_collector"]
+skip = [
+    ".git", ".venv", ".vscode", ".docs", "logs", "llm_models",
+    "src/trader_charts_data_collector.egg-info", "build", "dist"
+]
+
+[tool.ruff]
+line-length = 160
+target-version = "py311"
+extend-exclude = [
+    ".git", ".venv", ".vscode", ".docs", "logs", "llm_models",
+    "src/trader_charts_data_collector.egg-info", "build", "dist"
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "I", "UP"]
+ignore = ["E203", "B008"]

@@ -1,10 +1,15 @@
-import os
 from clients.selenium_client import SeleniumClient
 from dao.file_manager_dao import FileManagerDAO
 from dao.mongo_manager_dao import MongoManagerDAO
 
+
 class DownloadService:
-    def __init__(self, selenium_client: SeleniumClient, file_manager: FileManagerDAO, mongo_manager: MongoManagerDAO):
+    def __init__(
+        self,
+        selenium_client: SeleniumClient,
+        file_manager: FileManagerDAO,
+        mongo_manager: MongoManagerDAO,
+    ):
         self.selenium_client = selenium_client
         self.file_manager = file_manager
         self.mongo_manager = mongo_manager

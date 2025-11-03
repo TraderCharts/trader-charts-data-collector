@@ -1,12 +1,15 @@
 import os
 import time
+
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from config import SELENIUM_TIMEOUT, CHROME_WINDOW_SIZE, SELENIUM_HEADLESS
+from selenium.webdriver.support.ui import WebDriverWait
+
+from config import CHROME_WINDOW_SIZE, SELENIUM_HEADLESS, SELENIUM_TIMEOUT
+
 
 class SeleniumClient:
     def __init__(self, download_dir: str):
@@ -22,7 +25,7 @@ class SeleniumClient:
             "download.default_directory": self.download_dir,
             "download.prompt_for_download": False,
             "download.directory_upgrade": True,
-            "safebrowsing.enabled": True
+            "safebrowsing.enabled": True,
         }
         options.add_experimental_option("prefs", prefs)
 
@@ -37,9 +40,7 @@ class SeleniumClient:
         self.driver.get(url)
 
     def click_download_button(self):
-        element = self.wait.until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, "#Coti-hist-c .download button"))
-        )
+        element = self.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "#Coti-hist-c .download button")))
         self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
         time.sleep(0.5)
         self.driver.execute_script("arguments[0].click();", element)
@@ -50,10 +51,7 @@ class SeleniumClient:
             csv_files = [f for f in os.listdir(self.download_dir) if f.endswith(".csv")]
             new_files = [f for f in csv_files if f not in previous_files]
             if new_files:
-                new_files.sort(
-                    key=lambda f: os.path.getctime(os.path.join(self.download_dir, f)),
-                    reverse=True
-                )
+                new_files.sort(key=lambda f: os.path.getctime(os.path.join(self.download_dir, f)), reverse=True)
                 candidate = os.path.join(self.download_dir, new_files[0])
                 if not candidate.endswith(".crdownload"):
                     return candidate

@@ -4,20 +4,9 @@ Configuration file for the Selenium CSV Downloader project.
 Recommended structure for Python scripts, libraries, and microservices.
 """
 
-from dotenv import load_dotenv
+__version__ = "4.3.1"
+
 import os
-
-# === Load environment variables ===
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-# Prioridad: .env.local → .env
-dotenv_path = os.path.join(BASE_DIR, "..", ".env.local")
-if not os.path.exists(dotenv_path):
-    dotenv_path = os.path.join(BASE_DIR, "..", ".env")
-
-print(f"📂 Loading environment from: {dotenv_path}")
-load_dotenv(dotenv_path=dotenv_path)
-
 
 # === General settings ===
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -34,5 +23,49 @@ SELENIUM_HEADLESS = os.getenv("SELENIUM_HEADLESS", "True").lower() == "true"
 # Must be set in the environment or in .env.local; do not hardcode
 MONGO_URI = os.getenv("MONGO_URI")
 MONGO_DB_NAME = os.getenv("MONGO_DB_NAME")
-MONGO_COLLECTION = os.getenv("MONGO_COLLECTION")
+BYMA_COLLECTION = os.getenv("BYMA_COLLECTION")
+RSS_COLLECTION = os.getenv("RSS_COLLECTION")
 
+# URLs / Feeds
+HISTORICAL_URLS = [
+    ("https://www.rava.com/perfil/DOLAR%20MEP", "Dolar MEP"),
+    # add more URLs here
+]
+
+# using https://createfeed.fivefilters.org/?mode=feedcontrol
+RSS_FEEDS = [
+    {"sourceId": 1, "name": "clarin economia", "url": "https://www.clarin.com/rss/economia/"},
+    {
+        "sourceId": 2,
+        "name": "lanacion economia",
+        "url": "https://rss.app/feeds/1kL74AxcMUCjYsko.xml",
+    },
+    {
+        "sourceId": 3,
+        "name": "pagina12 economia",
+        "url": "https://www.pagina12.com.ar/rss/secciones/economia/notas",
+    },
+    {
+        "sourceId": 4,
+        "name": "infobae economia",
+        "url": "https://cdn.feedcontrol.net/13080/23180-IAH203wJ81I2f.xml",
+    },
+    # {"sourceId": 5,  "name": "ambito economia", "url": "https://api.rss2json.com/v1/api.json?rss_url=https://www.ambito.com/rss/pages/economia.xml"},
+    # {"sourceId": 6,  "name": "ambito finanzas", "url": "https://api.rss2json.com/v1/api.json?rss_url=https://www.ambito.com/rss/pages/finanzas.xml"},
+    # {"sourceId": 7,  "name": "perfil economia", "url": "https://www.perfil.com/feed/economia"},
+    # {"sourceId": 8,  "name": "eleconomista economia", "url": "https://eleconomista.com.ar/economia/feed/"},
+    {
+        "sourceId": 9,
+        "name": "eleconomista finanzas",
+        "url": "https://eleconomista.com.ar/finanzas/feed/",
+    },
+    # {"sourceId": 10,  "name": "eleconomista negocios", "url": "https://eleconomista.com.ar/negocios/feed/"},
+    {
+        "sourceId": 11,
+        "name": "laizquierdadiario",
+        "url": "https://www.laizquierdadiario.com/spip.php?page=backend&id_mot=13",
+    },
+    # add more feeds here
+]
+
+FEEDS_UPDATE_HOURS = 6
