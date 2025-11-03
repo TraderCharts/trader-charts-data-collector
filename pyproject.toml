@@ -1,0 +1,99 @@
+[build-system]
+requires = ["setuptools>=80", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "trader_charts_data_collector"
+description = "Trader Charts Data Collector"
+readme = {file = "README.md", content-type = "text/markdown"}
+
+authors = [
+    {name = "Gonzalo Sanchez Cano", email = "gonzalo.sanchezcano@gmail.com"},
+]
+
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Topic :: Office/Business :: Financial :: Investment",
+]
+
+requires-python = ">=3.9"
+dynamic = ["version"]
+
+dependencies = [
+    "pandas>=2.0.0,<3.0.0",
+    "pymongo>=4.0.0,<5.0.0",
+    "selenium>=4.10.0,<5.0.0",
+    "python-dotenv>=1.0.0,<2.0.0",
+    "feedparser>=6.0.0,<7.0.0",
+    "beautifulsoup4>=4.12.0,<5.0.0",
+    "textblob>=0.17.0,<0.20.0",
+    "keybert>=0.8.0,<0.10.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "isort>=5.12.0",
+]
+
+[project.urls]
+"Author" = "https://github.com/sgonzaloc"
+"Main Project" = "https://github.com/TraderCharts"
+"Source code" = "https://github.com/TraderCharts/trader-charts-data-collector"
+"Issue tracker" = "https://github.com/TraderCharts/trader-charts-data-collector/issues"
+"Changelog" = "https://github.com/TraderCharts/trader-charts-data-collector/releases"
+
+[project.scripts]
+
+[tool.setuptools.dynamic]
+version.attr = "config.__version__"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# === Tool configurations ===
+
+[tool.black]
+line-length = 160
+target-version = ["py311"]
+skip-string-normalization = true
+extend-exclude = '''
+/(
+    \.git
+  | \.venv
+  | \.vscode
+  | \.docs
+  | logs
+  | llm_models
+  | src/trader_charts_data_collector\.egg-info
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 160
+known_first_party = ["trader_charts_data_collector"]
+skip = [
+    ".git", ".venv", ".vscode", ".docs", "logs", "llm_models",
+    "src/trader_charts_data_collector.egg-info", "build", "dist"
+]
+
+[tool.ruff]
+line-length = 160
+target-version = "py311"
+extend-exclude = [
+    ".git", ".venv", ".vscode", ".docs", "logs", "llm_models",
+    "src/trader_charts_data_collector.egg-info", "build", "dist"
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "I", "UP"]
+ignore = ["E203", "B008"]

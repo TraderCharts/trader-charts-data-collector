@@ -1,0 +1,43 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ---- Virtual environment ----
+.venv*/
+
+# ---- IDE configuration ----
+.vscode/
+.idea/
+*.iml
+.history/
+out/
+
+# ---- Environment files ----
+.env
+.env.local
+.env.*.local
+.env.production
+.env.staging
+
+# ---- Build / packaging ----
+*.egg-info/
+build/
+dist/
+
+# ---- System / OS ----
+.DS_Store
+Thumbs.db
+.docs
+
+# ---- Donwloads ----
+/src/downloads/
+
+# ---- LLM Models ----
+llm_models/
+
+# ---- Logs ----
+logs/
+
+# ---- Cache ----
+.ruff_cache
