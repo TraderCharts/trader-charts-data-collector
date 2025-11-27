@@ -1,0 +1,12 @@
+# Incluir archivos individuales
+include README.md
+include LICENSE
+
+# Incluir todos los archivos dentro de un directorio
+recursive-include data *
+
+# Incluir archivos de configuración
+include config/*.yaml
+
+# Excluir archivos
+exclude secret.txt
