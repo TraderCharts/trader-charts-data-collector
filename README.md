@@ -26,6 +26,7 @@
 ![Isort](https://img.shields.io/badge/Isort-5.12.0-B1E0FF?logo=python&logoColor=white)
 ![Ruff](https://img.shields.io/badge/Ruff-0.1.0-61DAFB?logo=python&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-C0C0C0)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FTraderCharts%2Ftrader-charts-data-collector.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FTraderCharts%2Ftrader-charts-data-collector?ref=badge_shield)
 
 ---
 
@@ -101,3 +102,7 @@ Create `.env.development.local` file, and include all the following:
          MONGO_URI=[string]
          MONGO_DB_NAME=[string]
          MONGO_COLLECTION=[string]
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FTraderCharts%2Ftrader-charts-data-collector.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FTraderCharts%2Ftrader-charts-data-collector?ref=badge_large)
